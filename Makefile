@@ -1,5 +1,5 @@
 PKG_NAME := astral
-URL = https://files.pythonhosted.org/packages/cc/cc/65ca157e967756a8f08b1cf1c0a1a30c83ed32c50dbe83c557874ce101ca/astral-1.6.1.tar.gz
+URL = https://files.pythonhosted.org/packages/9e/7a/576cdd86191a7acfa42c5bb0515a019eed31e42dffe8f20a8fbee286ca6b/astral-1.7.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
