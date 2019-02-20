@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xE4A4A089F8B47FF2 (sffjunkie@gmail.com)
 #
 Name     : astral
-Version  : 1.9.1
-Release  : 6
-URL      : https://files.pythonhosted.org/packages/fe/e0/2ed001c1e488142cd7069747402b2bb32abaa379bf48344f88d4cd1e4b76/astral-1.9.1.tar.gz
-Source0  : https://files.pythonhosted.org/packages/fe/e0/2ed001c1e488142cd7069747402b2bb32abaa379bf48344f88d4cd1e4b76/astral-1.9.1.tar.gz
-Source99 : https://files.pythonhosted.org/packages/fe/e0/2ed001c1e488142cd7069747402b2bb32abaa379bf48344f88d4cd1e4b76/astral-1.9.1.tar.gz.asc
+Version  : 1.10.1
+Release  : 7
+URL      : https://files.pythonhosted.org/packages/86/05/25c772065bb6384789ca0f6ecc9d0bdd0bc210064e5c78453ee15124082e/astral-1.10.1.tar.gz
+Source0  : https://files.pythonhosted.org/packages/86/05/25c772065bb6384789ca0f6ecc9d0bdd0bc210064e5c78453ee15124082e/astral-1.10.1.tar.gz
+Source99 : https://files.pythonhosted.org/packages/86/05/25c772065bb6384789ca0f6ecc9d0bdd0bc210064e5c78453ee15124082e/astral-1.10.1.tar.gz.asc
 Summary  : Calculations for the position of the sun and moon.
 Group    : Development/Tools
 License  : Apache-2.0
@@ -23,11 +23,9 @@ BuildRequires : buildreq-scons
 BuildRequires : pytz
 
 %description
-Astral
 ======
-|travis_status| |pypi_ver|
-.. |travis_status| image:: https://travis-ci.org/sffjunkie/astral.svg?branch=master
-:target: https://travis-ci.org/sffjunkie/astral
+        
+        |travis_status| |pypi_ver|
 
 %package license
 Summary: license components for the astral package.
@@ -56,18 +54,20 @@ python3 components for the astral package.
 
 
 %prep
-%setup -q -n astral-1.9.1
+%setup -q -n astral-1.10.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1548690988
+export SOURCE_DATE_EPOCH=1550694903
+export LDFLAGS="${LDFLAGS} -fno-lto"
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
 %install
+export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/astral
 cp LICENSE %{buildroot}/usr/share/package-licenses/astral/LICENSE
