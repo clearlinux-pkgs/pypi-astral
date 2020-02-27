@@ -6,10 +6,10 @@
 #
 Name     : astral
 Version  : 1.10.1
-Release  : 11
+Release  : 12
 URL      : https://files.pythonhosted.org/packages/86/05/25c772065bb6384789ca0f6ecc9d0bdd0bc210064e5c78453ee15124082e/astral-1.10.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/86/05/25c772065bb6384789ca0f6ecc9d0bdd0bc210064e5c78453ee15124082e/astral-1.10.1.tar.gz
-Source99 : https://files.pythonhosted.org/packages/86/05/25c772065bb6384789ca0f6ecc9d0bdd0bc210064e5c78453ee15124082e/astral-1.10.1.tar.gz.asc
+Source1  : https://files.pythonhosted.org/packages/86/05/25c772065bb6384789ca0f6ecc9d0bdd0bc210064e5c78453ee15124082e/astral-1.10.1.tar.gz.asc
 Summary  : Calculations for the position of the sun and moon.
 Group    : Development/Tools
 License  : Apache-2.0
@@ -21,11 +21,40 @@ Requires: requests
 BuildRequires : buildreq-distutils3
 BuildRequires : buildreq-scons
 BuildRequires : pytz
+BuildRequires : requests
 
 %description
+Astral
 ======
-        
-        |travis_status| |pypi_ver|
+
+|travis_status| |pypi_ver|
+
+.. |travis_status| image:: https://travis-ci.org/sffjunkie/astral.svg?branch=master
+    :target: https://travis-ci.org/sffjunkie/astral
+
+.. |pypi_ver| image:: https://img.shields.io/pypi/v/astral.svg
+    :target: https://pypi.org/project/astral/
+
+This is 'astral' a Python module which calculates
+
+    * Times for various positions of the sun: dawn, sunrise, solar noon,
+      sunset, dusk, solar elevation, solar azimuth and rahukaalam.
+    * The phase of the moon.
+
+For documentation see the https://astral.readthedocs.io/en/stable/index.html
+
+GoogleGeocoder
+~~~~~~~~~~~~~~
+
+`GoogleGeocoder` uses the mapping services provided by Google
+
+Access to the `GoogleGeocoder` requires you to agree to be bound by
+Google Maps/Google Earth APIs Terms of Service found at
+https://developers.google.com/maps/terms which includes but is not limited to
+having a Google Account.
+
+More information on Google's maps service can be found at
+https://developers.google.com/maps/documentation/
 
 %package license
 Summary: license components for the astral package.
@@ -48,6 +77,7 @@ python components for the astral package.
 Summary: python3 components for the astral package.
 Group: Default
 Requires: python3-core
+Provides: pypi(astral)
 
 %description python3
 python3 components for the astral package.
@@ -55,14 +85,20 @@ python3 components for the astral package.
 
 %prep
 %setup -q -n astral-1.10.1
+cd %{_builddir}/astral-1.10.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1550694903
-export LDFLAGS="${LDFLAGS} -fno-lto"
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1582846764
+# -Werror is for werrorists
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$CFLAGS -fno-lto "
+export FFLAGS="$CFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
@@ -70,7 +106,7 @@ python3 setup.py build
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/astral
-cp LICENSE %{buildroot}/usr/share/package-licenses/astral/LICENSE
+cp %{_builddir}/astral-1.10.1/LICENSE %{buildroot}/usr/share/package-licenses/astral/a8f3e29d5eab4420318de979754f5637d4bf2c3f
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -81,7 +117,7 @@ echo ----[ mark ]----
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/astral/LICENSE
+/usr/share/package-licenses/astral/a8f3e29d5eab4420318de979754f5637d4bf2c3f
 
 %files python
 %defattr(-,root,root,-)
