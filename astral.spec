@@ -6,7 +6,7 @@
 #
 Name     : astral
 Version  : 1.10.1
-Release  : 14
+Release  : 15
 URL      : https://files.pythonhosted.org/packages/86/05/25c772065bb6384789ca0f6ecc9d0bdd0bc210064e5c78453ee15124082e/astral-1.10.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/86/05/25c772065bb6384789ca0f6ecc9d0bdd0bc210064e5c78453ee15124082e/astral-1.10.1.tar.gz
 Source1  : https://files.pythonhosted.org/packages/86/05/25c772065bb6384789ca0f6ecc9d0bdd0bc210064e5c78453ee15124082e/astral-1.10.1.tar.gz.asc
@@ -24,37 +24,9 @@ BuildRequires : pytz
 BuildRequires : requests
 
 %description
-Astral
 ======
-
-|travis_status| |pypi_ver|
-
-.. |travis_status| image:: https://travis-ci.org/sffjunkie/astral.svg?branch=master
-    :target: https://travis-ci.org/sffjunkie/astral
-
-.. |pypi_ver| image:: https://img.shields.io/pypi/v/astral.svg
-    :target: https://pypi.org/project/astral/
-
-This is 'astral' a Python module which calculates
-
-    * Times for various positions of the sun: dawn, sunrise, solar noon,
-      sunset, dusk, solar elevation, solar azimuth and rahukaalam.
-    * The phase of the moon.
-
-For documentation see the https://astral.readthedocs.io/en/stable/index.html
-
-GoogleGeocoder
-~~~~~~~~~~~~~~
-
-`GoogleGeocoder` uses the mapping services provided by Google
-
-Access to the `GoogleGeocoder` requires you to agree to be bound by
-Google Maps/Google Earth APIs Terms of Service found at
-https://developers.google.com/maps/terms which includes but is not limited to
-having a Google Account.
-
-More information on Google's maps service can be found at
-https://developers.google.com/maps/documentation/
+        
+        |travis_status| |pypi_ver|
 
 %package license
 Summary: license components for the astral package.
@@ -78,6 +50,7 @@ Summary: python3 components for the astral package.
 Group: Default
 Requires: python3-core
 Provides: pypi(astral)
+Requires: pypi(pytz)
 
 %description python3
 python3 components for the astral package.
@@ -92,12 +65,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1582846764
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1603387515
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$CFLAGS -fno-lto "
-export FFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
