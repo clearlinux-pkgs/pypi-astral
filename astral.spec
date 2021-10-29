@@ -4,7 +4,7 @@
 #
 Name     : astral
 Version  : 2.2
-Release  : 27
+Release  : 28
 URL      : https://files.pythonhosted.org/packages/ad/c3/76dfe55a68c48a1a6f3d2eeab2793ebffa9db8adfba82774a7e0f5f43980/astral-2.2.tar.gz
 Source0  : https://files.pythonhosted.org/packages/ad/c3/76dfe55a68c48a1a6f3d2eeab2793ebffa9db8adfba82774a7e0f5f43980/astral-2.2.tar.gz
 Summary  : Calculations for the position of the sun and moon.
