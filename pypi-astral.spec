@@ -4,7 +4,7 @@
 #
 Name     : pypi-astral
 Version  : 2.2
-Release  : 32
+Release  : 33
 URL      : https://files.pythonhosted.org/packages/ad/c3/76dfe55a68c48a1a6f3d2eeab2793ebffa9db8adfba82774a7e0f5f43980/astral-2.2.tar.gz
 Source0  : https://files.pythonhosted.org/packages/ad/c3/76dfe55a68c48a1a6f3d2eeab2793ebffa9db8adfba82774a7e0f5f43980/astral-2.2.tar.gz
 Summary  : Calculations for the position of the sun and moon.
@@ -17,7 +17,6 @@ BuildRequires : buildreq-distutils3
 BuildRequires : pypi(dataclasses)
 BuildRequires : pypi(poetry)
 BuildRequires : pypi(pytz)
-Provides: astral
 
 %description
 ======
@@ -62,7 +61,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1641409748
+export SOURCE_DATE_EPOCH=1649712168
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
