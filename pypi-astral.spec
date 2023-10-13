@@ -4,7 +4,7 @@
 #
 Name     : pypi-astral
 Version  : 3.2
-Release  : 49
+Release  : 50
 URL      : https://files.pythonhosted.org/packages/04/d1/1adbf06a38dc339e41a1666f6c7135924594c20fd46e060fb263248c564d/astral-3.2.tar.gz
 Source0  : https://files.pythonhosted.org/packages/04/d1/1adbf06a38dc339e41a1666f6c7135924594c20fd46e060fb263248c564d/astral-3.2.tar.gz
 Summary  : Calculations for the position of the sun and moon.
